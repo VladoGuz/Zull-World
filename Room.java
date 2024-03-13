@@ -8,13 +8,19 @@
  * @version 1.0 (February 2002)
  */
 
-public class Room 
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Set;
+
+
+public class Room
 {
-    public String description;
-    public Room northExit;
-    public Room southExit;
-    public Room eastExit;
-    public Room westExit;
+    private String description;
+    private Room northExit;
+    private Room southExit;
+    private Room eastExit;
+    private Room westExit;
+    private HashMap<String, Room> exits;
 
     /**
      * Create a room described "description". Initially, it has
@@ -23,7 +29,9 @@ public class Room
      */
     public Room(String description) 
     {
+
         this.description = description;
+        exits = new HashMap<>();
     }
 
     /**
@@ -33,13 +41,22 @@ public class Room
     public void setExits(Room north, Room east, Room south, Room west) 
     {
         if(north != null)
-            northExit = north;
+            exits.put("north",north);
         if(east != null)
-            eastExit = east;
+            exits.put("east",east);
         if(south != null)
-            southExit = south;
+            exits.put("south",south);
         if(west != null)
-            westExit = west;
+            exits.put("west",west);
+    }
+    public void setExits(String direction, Room neighbor){
+
+        exits.put(direction, neighbor);
+    }
+
+
+    public Room getExit(String direction) {
+        return exits.get(direction);
     }
 
     /**
@@ -51,4 +68,46 @@ public class Room
         return description;
     }
 
+    public String getExitString() {
+        String returnString = "Exits:";
+        Set keys = exits.keySet();
+        for(Iterator iter = keys.iterator(); iter.hasNext(); )
+            returnString += " " + iter.next();
+        return returnString;
+    }
+    public Room getNorthExit() {
+        return northExit;
+    }
+
+    public void setNorthExit(Room northExit) {
+        this.northExit = northExit;
+    }
+
+    public Room getSouthExit() {
+        return southExit;
+    }
+
+    public void setSouthExit(Room southExit) {
+        this.southExit = southExit;
+    }
+
+    public Room getEastExit() {
+        return eastExit;
+    }
+
+    public void setEastExit(Room eastExit) {
+        this.eastExit = eastExit;
+    }
+
+    public Room getWestExit() {
+        return westExit;
+    }
+
+    public void setWestExit(Room westExit) {
+        this.westExit = westExit;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 }
