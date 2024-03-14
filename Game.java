@@ -48,8 +48,8 @@ public class Game
         hole.setExits("up", basament);
         pub.setExits("up", terrace);
         terrace.setExits("down", pub);
-        terrace.setExits("north", bathroom);
-        bathroom.setExits("south", terrace);
+        terrace.setExits("east", bathroom);
+        bathroom.setExits("west", terrace);
 
 
         currentRoom = outside;  // start game outside
