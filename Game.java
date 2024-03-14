@@ -22,29 +22,35 @@ public class Game
      */
     private void createRooms()
     {
-        Room outside, theatre, pub, lab, office;
-
-        // cuatro cuartos altas y bajas
-
-
-
-
+        Room outside, theatre, pub, lab, office, basament,hole, terrace, bathroom;
         // create the rooms
         outside = new Room("outside the main entrance of the university");
         theatre = new Room("in a lecture theatre");
         pub = new Room("in the campus pub");
         lab = new Room("in a computing lab");
         office = new Room("in the computing admin office");
-        
+        basament = new Room("in the basament");
+        hole = new Room("There is something strange, like a hole...");
+        terrace = new Room("in the terrace");
+        bathroom = new Room("in the bathroom");
         // initialise room exits
-        outside.setExits("south",theatre);
-        outside.setExits("east",lab);
+        outside.setExits("south",lab);
+        outside.setExits("east",theatre);
         outside.setExits("west",pub);
         theatre.setExits("west", outside);
         pub.setExits("east", outside);
         lab.setExits("north",outside);
         lab.setExits("east",office);
-        office.setExits("Weast", lab);
+        office.setExits("west", lab);
+        theatre.setExits("down", basament);
+        basament.setExits("up", theatre);
+        basament.setExits("down", hole);
+        hole.setExits("up", basament);
+        pub.setExits("up", terrace);
+        terrace.setExits("down", pub);
+        terrace.setExits("north", bathroom);
+        bathroom.setExits("south", terrace);
+
 
         currentRoom = outside;  // start game outside
     }
@@ -141,7 +147,7 @@ public class Game
 
 
         /*
-           if(direction.equals("north"))
+        if(direction.equals("north"))
             nextRoom = currentRoom.northExit;
         if(direction.equals("east"))
             nextRoom = currentRoom.eastExit;

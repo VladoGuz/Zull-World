@@ -38,7 +38,7 @@ public class Room
      * Define the exits of this room.  Every direction either leads
      * to another room or is null (no exit there).
      */
-    public void setExits(Room north, Room east, Room south, Room west) 
+    public void setExits(Room north, Room east, Room south, Room west, Room up, Room down)
     {
         if(north != null)
             exits.put("north",north);
@@ -48,6 +48,11 @@ public class Room
             exits.put("south",south);
         if(west != null)
             exits.put("west",west);
+        if(up != null)
+            exits.put("up",up);
+        if(down != null)
+            exits.put("down",down);
+
     }
     public void setExits(String direction, Room neighbor){
 
