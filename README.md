@@ -1,4 +1,4 @@
 Vladimir López Guzman
 
 
-![image](https://github.com/VladoGuz/Zull-World/assets/84219220/dbcf51db-4648-4aed-81f3-029abb996d34)
+![image](https://github.com/VladoGuz/Zull-World/assets/84219220/bfbff490-da33-4c13-8738-d064aee26c5d)
